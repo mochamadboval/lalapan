@@ -1,2 +1,3 @@
-# lalapan
-Aplikasi web tentang komposisi gizi lalapan.
+# Lalapan
+
+Aplikasi web tentang komposisi gizi pada lalapan.
