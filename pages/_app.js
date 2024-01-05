@@ -24,7 +24,7 @@ export default function App({ Component, pageProps }) {
         ></link>
       </Head>
 
-      <main className={font.className}>
+      <main className={`${font.className} mx-4 py-8 sm:mx-8 lg:mx-12 xl:mx-4`}>
         <Component {...pageProps} />
       </main>
     </>
