@@ -20,7 +20,7 @@ function Td({ children, style }) {
   );
 }
 
-export default function Table({ lalapan }) {
+export default function Table({ sorted }) {
   const [highlight, setHighlight] = useState([]);
 
   const highlightRow = (id) => {
@@ -33,7 +33,7 @@ export default function Table({ lalapan }) {
 
   return (
     <>
-      <div className="max-h-[90svh] overflow-auto">
+      <div className="mt-4 max-h-[90svh] overflow-auto">
         <table className="relative w-full border-separate border-spacing-0 text-center">
           <thead>
             <tr>
@@ -55,7 +55,7 @@ export default function Table({ lalapan }) {
             </tr>
           </thead>
           <tbody>
-            {lalapan.map((info, index) => (
+            {sorted.map((info, index) => (
               <tr
                 key={info.id}
                 className={`

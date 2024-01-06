@@ -1,12 +1,23 @@
 import { readFile } from "fs/promises";
 import { join } from "path";
 
+import { useState } from "react";
+
+import SortOrder from "@/components/SortOrder";
 import Table from "@/components/Table";
 
 export default function Home({ lalapan }) {
+  const [sortBy, setSortBy] = useState("nama");
+
+  let sorted = [...lalapan];
+  if (sortBy !== "nama") {
+    sorted = sorted.sort((a, b) => a[sortBy] - b[sortBy]);
+  }
+
   return (
     <article>
-      <Table lalapan={lalapan} />
+      <SortOrder sortBy={sortBy} setSortBy={setSortBy} />
+      <Table sorted={sorted} />
     </article>
   );
 }
