@@ -3,20 +3,32 @@ import { join } from "path";
 
 import { useState } from "react";
 
-import SortOrder from "@/components/SortOrder";
+import { Order, Sort } from "@/components/SortOrder";
 import Table from "@/components/Table";
 
 export default function Home({ lalapan }) {
+  const [orderBy, setOrderBy] = useState("lowest");
   const [sortBy, setSortBy] = useState("nama");
 
   let sorted = [...lalapan];
-  if (sortBy !== "nama") {
-    sorted = sorted.sort((a, b) => a[sortBy] - b[sortBy]);
+  if (orderBy === "lowest") {
+    if (sortBy !== "nama") {
+      sorted = sorted.sort((a, b) => a[sortBy] - b[sortBy]);
+    }
+  } else {
+    sorted = sorted.reverse();
+
+    if (sortBy !== "nama") {
+      sorted = sorted.sort((a, b) => b[sortBy] - a[sortBy]);
+    }
   }
 
   return (
     <article>
-      <SortOrder sortBy={sortBy} setSortBy={setSortBy} />
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-center">
+        <Sort sortBy={sortBy} setSortBy={setSortBy} />
+        <Order orderBy={orderBy} sortBy={sortBy} setOrderBy={setOrderBy} />
+      </div>
       <Table sorted={sorted} />
     </article>
   );
