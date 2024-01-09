@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 import { Plus_Jakarta_Sans } from "next/font/google";
 
 import "@/styles/globals.css";
@@ -24,6 +25,18 @@ export default function App({ Component, pageProps }) {
         ></link>
       </Head>
 
+      <header
+        className={`${font.className} px-4 py-8 sm:px-8 lg:px-12 xl:px-4`}
+      >
+        <h1 className="text-5xl font-semibold leading-tight">
+          <Link href="/" prefetch={false}>
+            Gizi Lalapan
+          </Link>
+        </h1>
+        <p className="mt-4 text-2xl font-light leading-normal">
+          Berdasarkan data Tabel Komposisi Pangan Indonesia tahun 2017.
+        </p>
+      </header>
       <main className={`${font.className} mx-4 py-8 sm:mx-8 lg:mx-12 xl:mx-4`}>
         <Component {...pageProps} />
       </main>
