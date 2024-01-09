@@ -1,8 +1,10 @@
 import { useState } from "react";
 
-function Th({ children, unit }) {
+function Th({ children, style, unit }) {
   return (
-    <th className="sticky top-0 border-b border-r border-t border-neutral-800 bg-neutral-950 p-2.5 font-semibold text-white first:border-l">
+    <th
+      className={`${style} sticky top-0 border-b border-r border-t border-neutral-800 bg-neutral-950 p-2.5 font-semibold text-white first:border-l`}
+    >
       {children}
       <br />
       <span className="font-normal">{unit}</span>
@@ -20,7 +22,7 @@ function Td({ children, style }) {
   );
 }
 
-export default function Table({ sorted }) {
+export default function Table({ sortBy, sorted, table }) {
   const [highlight, setHighlight] = useState([]);
 
   const highlightRow = (id) => {
@@ -37,48 +39,72 @@ export default function Table({ sorted }) {
         <table className="relative w-full border-separate border-spacing-0 text-center">
           <thead>
             <tr>
-              <Th>No</Th>
-              <Th>Nama</Th>
-              <Th unit="(g)">Air</Th>
-              <Th unit="(kal)">Energi</Th>
-              <Th unit="(g)">Protein</Th>
-              <Th unit="(g)">Lemak</Th>
-              <Th unit="(g)">Karbohidrat</Th>
-              <Th unit="(g)">Serat</Th>
-              <Th unit="(mg)">Kalsium</Th>
-              <Th unit="(mg)">Fosfor</Th>
-              <Th unit="(mg)">Besi</Th>
-              <Th unit="(mg)">Natrium</Th>
-              <Th unit="(mg)">Kalium</Th>
-              <Th unit="(mg)">Vitamin&nbsp;C</Th>
-              <Th unit="(%)">BDD</Th>
+              {table.map((info, index) => (
+                <Th
+                  key={info.kolom}
+                  unit={info.unit}
+                  style={`
+                    ${info.kolom === "Vitamin C" && "whitespace-nowrap"}
+                    ${
+                      index === 1 && sortBy !== "nama"
+                        ? "!border-r-green-300"
+                        : undefined
+                    }
+                    ${
+                      index === 2 && sortBy !== "nama"
+                        ? "!border-r-green-300 !border-t-green-300"
+                        : undefined
+                    }
+                  `}
+                >
+                  {info.kolom}
+                </Th>
+              ))}
             </tr>
           </thead>
           <tbody>
             {sorted.map((info, index) => (
               <tr
-                key={info.id}
+                key={info[0][1]}
                 className={`
-                ${index % 2 === 0 ? "bg-neutral-50" : "bg-neutral-100"}
-                ${highlight.includes(info.id) && "!bg-green-200"}
-              `}
-                onClick={() => highlightRow(info.id)}
+                  ${index % 2 === 0 ? "bg-neutral-50" : "bg-neutral-100"}
+                  ${highlight.includes(info[0][1]) && "!bg-green-200"}
+                `}
+                onClick={() => highlightRow(info[0][1])}
               >
                 <Td>{index + 1}</Td>
-                <Td style="text-left whitespace-nowrap">{info.nama}</Td>
-                <Td>{info.air}</Td>
-                <Td>{info.energi}</Td>
-                <Td>{info.protein}</Td>
-                <Td>{info.lemak}</Td>
-                <Td>{info.karbohidrat}</Td>
-                <Td>{info.serat}</Td>
-                <Td>{info.kalsium}</Td>
-                <Td>{info.fosfor}</Td>
-                <Td>{info.besi}</Td>
-                <Td>{info.natrium}</Td>
-                <Td>{info.kalium}</Td>
-                <Td>{info.vitamin_c}</Td>
-                <Td>{info.bdd}</Td>
+                <Td
+                  style={`
+                    ${sortBy !== "nama" && "!border-r-green-300"}
+                    text-left whitespace-nowrap
+                  `}
+                >
+                  {info[1][1]}
+                </Td>
+                <Td
+                  style={`
+                    ${sortBy !== "nama" && "!border-r-green-300"}
+                    ${
+                      sortBy !== "nama" && index + 1 === sorted.length
+                        ? "!border-b-green-300"
+                        : undefined
+                    }
+                  `}
+                >
+                  {info[2][1]}
+                </Td>
+                <Td>{info[3][1]}</Td>
+                <Td>{info[4][1]}</Td>
+                <Td>{info[5][1]}</Td>
+                <Td>{info[6][1]}</Td>
+                <Td>{info[7][1]}</Td>
+                <Td>{info[8][1]}</Td>
+                <Td>{info[9][1]}</Td>
+                <Td>{info[10][1]}</Td>
+                <Td>{info[11][1]}</Td>
+                <Td>{info[12][1]}</Td>
+                <Td>{info[13][1]}</Td>
+                <Td>{info[14][1]}</Td>
               </tr>
             ))}
           </tbody>
