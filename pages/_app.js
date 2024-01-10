@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Image from "next/image";
 import Link from "next/link";
 import { Plus_Jakarta_Sans } from "next/font/google";
 
@@ -9,6 +10,15 @@ const font = Plus_Jakarta_Sans({
   subsets: ["latin"],
   weight: "variable",
 });
+
+function AsideSection({ children, title }) {
+  return (
+    <section className="sm:w-1/2">
+      <h2 className="text-3xl font-semibold leading-tight">{title}</h2>
+      <p className="mt-2">{children}</p>
+    </section>
+  );
+}
 
 export default function App({ Component, pageProps }) {
   return (
@@ -37,9 +47,41 @@ export default function App({ Component, pageProps }) {
           Berdasarkan data Tabel Komposisi Pangan Indonesia tahun 2017.
         </p>
       </header>
-      <main className={`${font.className} mx-4 py-8 sm:mx-8 lg:mx-12 xl:mx-4`}>
+      <main
+        className={`${font.className} mx-4 pb-16 pt-8 sm:mx-8 lg:mx-12 xl:mx-4`}
+      >
         <Component {...pageProps} />
       </main>
+      <aside
+        className={`${font.className} flex flex-col gap-8 rounded-t-2xl bg-black px-4 py-8 text-white sm:flex-row sm:gap-4 sm:px-8 lg:px-12 xl:px-4`}
+      >
+        <AsideSection title="Tentang">
+          Aplikasi web tentang komposisi gizi pada lalapan. Sumber data Tabel
+          Komposisi Pangan Indonesia tahun 2017 dapat diakses juga melalui situs{" "}
+          <a
+            href="http://panganku.org/id-ID/beranda"
+            className="text-green-300"
+          >
+            panganku.org
+          </a>
+          .
+        </AsideSection>
+        <AsideSection title="Kode Sumber">
+          <a
+            href="https://github.com/mochamadboval/lalapan"
+            className="text-green-300"
+          >
+            github.com/mochamadboval/lalapan
+          </a>
+        </AsideSection>
+      </aside>
+      <footer
+        className={`${font.className} border-t border-t-neutral-900 bg-black px-4 py-4 text-center text-white sm:flex-row sm:px-8 lg:px-12 xl:px-4`}
+      >
+        <small className="text-base font-semibold">
+          Gizi Lalapan &copy; 2024 - MIT License
+        </small>
+      </footer>
     </>
   );
 }
