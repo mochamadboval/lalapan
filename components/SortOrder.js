@@ -6,7 +6,7 @@ function SelectForm({ children, id, label, selectBy, setSelectBy }) {
       </label>
       <select
         id={id}
-        className="w-full border-0 border-y border-transparent border-b-black bg-transparent py-2.5 sm:w-36"
+        className="w-full border-0 border-y border-transparent border-b-neutral-950 bg-transparent py-2.5 sm:w-36"
         value={selectBy}
         onChange={(event) => setSelectBy(event.target.value)}
       >

@@ -3,7 +3,7 @@ import { useState } from "react";
 function Th({ children, style, unit }) {
   return (
     <th
-      className={`${style} sticky top-0 border-b border-r border-t border-neutral-800 bg-neutral-950 p-2.5 font-semibold text-white first:border-l`}
+      className={`${style} sticky top-0 border-b border-r border-t border-neutral-800 bg-neutral-950 p-2.5 font-semibold text-neutral-50 first:border-l`}
     >
       {children}
       <br />
@@ -45,15 +45,11 @@ export default function Table({ sortBy, sorted, table }) {
                   unit={info.unit}
                   style={`
                     ${info.kolom === "Vitamin C" && "whitespace-nowrap"}
+                    ${index === 1 && sortBy !== "nama" && "!border-r-green-300"}
                     ${
-                      index === 1 && sortBy !== "nama"
-                        ? "!border-r-green-300"
-                        : undefined
-                    }
-                    ${
-                      index === 2 && sortBy !== "nama"
-                        ? "!border-r-green-300 !border-t-green-300"
-                        : undefined
+                      index === 2 &&
+                      sortBy !== "nama" &&
+                      "!border-r-green-300 !border-t-green-300"
                     }
                   `}
                 >
@@ -67,7 +63,7 @@ export default function Table({ sortBy, sorted, table }) {
               <tr
                 key={info[0][1]}
                 className={`
-                  ${index % 2 === 0 ? "bg-neutral-50" : "bg-neutral-100"}
+                  ${index % 2 === 0 ? "bg-white" : "bg-neutral-100"}
                   ${highlight.includes(info[0][1]) && "!bg-green-200"}
                 `}
                 onClick={() => highlightRow(info[0][1])}
@@ -85,9 +81,9 @@ export default function Table({ sortBy, sorted, table }) {
                   style={`
                     ${sortBy !== "nama" && "!border-r-green-300"}
                     ${
-                      sortBy !== "nama" && index + 1 === sorted.length
-                        ? "!border-b-green-300"
-                        : undefined
+                      sortBy !== "nama" &&
+                      index + 1 === sorted.length &&
+                      "!border-b-green-300"
                     }
                   `}
                 >

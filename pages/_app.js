@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Image from "next/image";
 import Link from "next/link";
 import { Plus_Jakarta_Sans } from "next/font/google";
 
@@ -53,14 +52,14 @@ export default function App({ Component, pageProps }) {
         <Component {...pageProps} />
       </main>
       <aside
-        className={`${font.className} flex flex-col gap-8 rounded-t-2xl bg-black px-4 py-8 text-white sm:flex-row sm:gap-4 sm:px-8 lg:px-12 xl:px-4`}
+        className={`${font.className} flex flex-col gap-8 rounded-t-2xl bg-neutral-950 px-4 py-8 text-neutral-50 sm:flex-row sm:gap-4 sm:px-8 lg:px-12 xl:px-4`}
       >
         <AsideSection title="Tentang">
           Aplikasi web tentang komposisi gizi pada lalapan. Sumber data Tabel
           Komposisi Pangan Indonesia tahun 2017 dapat diakses juga melalui situs{" "}
           <a
             href="http://panganku.org/id-ID/beranda"
-            className="text-green-300"
+            className="text-green-400"
           >
             panganku.org
           </a>
@@ -69,14 +68,14 @@ export default function App({ Component, pageProps }) {
         <AsideSection title="Kode Sumber">
           <a
             href="https://github.com/mochamadboval/lalapan"
-            className="text-green-300"
+            className="text-green-400"
           >
             github.com/mochamadboval/lalapan
           </a>
         </AsideSection>
       </aside>
       <footer
-        className={`${font.className} border-t border-t-neutral-900 bg-black px-4 py-4 text-center text-white sm:flex-row sm:px-8 lg:px-12 xl:px-4`}
+        className={`${font.className} border-t border-t-neutral-900 bg-neutral-950 px-4 py-4 text-center text-neutral-50 sm:flex-row sm:px-8 lg:px-12 xl:px-4`}
       >
         <small className="text-base font-semibold">
           Gizi Lalapan &copy; 2024 - MIT License
