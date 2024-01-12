@@ -20,7 +20,7 @@ export function Sort({ sortBy, setSortBy }) {
   return (
     <SelectForm
       id="sort"
-      label="Urut berdasarkan :"
+      label="Urut Berdasarkan :"
       selectBy={sortBy}
       setSelectBy={setSortBy}
     >

@@ -7,7 +7,7 @@ function Th({ children, style, unit }) {
     >
       {children}
       <br />
-      <span className="font-normal">{unit}</span>
+      <span className="text-sm font-normal">{unit}</span>
     </th>
   );
 }
@@ -75,7 +75,7 @@ export default function Table({ sortBy, sorted, table }) {
                     text-left whitespace-nowrap
                   `}
                 >
-                  {info[1][1]}
+                  <h2>{info[1][1]}</h2>
                 </Td>
                 <Td
                   style={`
@@ -108,8 +108,12 @@ export default function Table({ sortBy, sorted, table }) {
       </div>
       <p className="mt-4 font-semibold">Keterangan :</p>
       <ul className="list-inside list-disc">
-        <li>Komposisi gizi per 100 gram</li>
-        <li>BDD (Berat Dapat Dimakan)</li>
+        <li>
+          Komposisi gizi per <strong className="font-semibold">100 gram</strong>
+        </li>
+        <li>
+          <strong className="font-semibold">BDD</strong> (Berat Dapat Dimakan)
+        </li>
         <li>Klik baris untuk disorot</li>
       </ul>
     </>
