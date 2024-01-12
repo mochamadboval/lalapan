@@ -70,28 +70,9 @@ export default function Home({ lalapan, tabel }) {
 }
 
 export async function getStaticProps() {
-  const path = join(process.cwd(), "json", "lalapan.json");
+  const path = join(process.cwd(), "json", "overview.json");
   const data = await readFile(path);
   const { lalapan, tabel } = JSON.parse(data);
-  const overview = lalapan.map((info) => {
-    return {
-      id: info.id,
-      nama: info.nama,
-      air: info.air,
-      energi: info.energi,
-      protein: info.protein,
-      lemak: info.lemak,
-      karbohidrat: info.karbohidrat,
-      serat: info.serat,
-      kalsium: info.kalsium,
-      fosfor: info.fosfor,
-      besi: info.besi,
-      natrium: info.natrium,
-      kalium: info.kalium,
-      vitamin_c: info.vitamin_c,
-      bdd: info.bdd,
-    };
-  });
 
-  return { props: { lalapan: overview, tabel } };
+  return { props: { lalapan, tabel } };
 }
