@@ -25,9 +25,10 @@ function Td({ children, style }) {
   );
 }
 
-export default function Table({ sortBy, sorted, table }) {
+export default function Table({ sorted, table }) {
   const dispatch = useDispatch();
   const highlight = useSelector((state) => state.highlight.highlight);
+  const sortBy = useSelector((state) => state.sortOrder.sortBy);
 
   const highlightRow = (id) => {
     if (highlight.includes(id)) {

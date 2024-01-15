@@ -1,7 +1,7 @@
 import { readFile } from "fs/promises";
 import { join } from "path";
 
-import { useState } from "react";
+import { useSelector } from "react-redux";
 
 import { Order, Sort } from "@/components/SortOrder";
 import Table from "@/components/Table";
@@ -49,8 +49,8 @@ function moveColumn(sortBy, sorted, table) {
 }
 
 export default function Home({ lalapan, tabel }) {
-  const [orderBy, setOrderBy] = useState("lowest");
-  const [sortBy, setSortBy] = useState("nama");
+  const orderBy = useSelector((state) => state.sortOrder.orderBy);
+  const sortBy = useSelector((state) => state.sortOrder.sortBy);
 
   let sorted = [...lalapan];
   let table = [...tabel];
@@ -61,10 +61,10 @@ export default function Home({ lalapan, tabel }) {
   return (
     <article>
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-center">
-        <Sort sortBy={sortBy} setSortBy={setSortBy} />
-        <Order orderBy={orderBy} sortBy={sortBy} setOrderBy={setOrderBy} />
+        <Sort />
+        <Order />
       </div>
-      <Table sortBy={sortBy} sorted={sorted} table={table} />
+      <Table sorted={sorted} table={table} />
     </article>
   );
 }

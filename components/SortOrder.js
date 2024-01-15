@@ -1,3 +1,6 @@
+import { useDispatch, useSelector } from "react-redux";
+import { sortOrderActions } from "@/store";
+
 function SelectForm({ children, id, label, selectBy, setSelectBy }) {
   return (
     <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
@@ -8,7 +11,7 @@ function SelectForm({ children, id, label, selectBy, setSelectBy }) {
         id={id}
         className="w-full border-0 border-y border-transparent border-b-neutral-950 bg-transparent py-2.5 sm:w-36"
         value={selectBy}
-        onChange={(event) => setSelectBy(event.target.value)}
+        onChange={setSelectBy}
       >
         {children}
       </select>
@@ -16,13 +19,18 @@ function SelectForm({ children, id, label, selectBy, setSelectBy }) {
   );
 }
 
-export function Sort({ sortBy, setSortBy }) {
+export function Sort() {
+  const dispatch = useDispatch();
+  const sortBy = useSelector((state) => state.sortOrder.sortBy);
+
   return (
     <SelectForm
       id="sort"
       label="Urut Berdasarkan :"
       selectBy={sortBy}
-      setSelectBy={setSortBy}
+      setSelectBy={(event) =>
+        dispatch(sortOrderActions.setSort(event.target.value))
+      }
     >
       <option value="nama">Nama</option>
       <option value="air">Air</option>
@@ -41,13 +49,19 @@ export function Sort({ sortBy, setSortBy }) {
   );
 }
 
-export function Order({ orderBy, sortBy, setOrderBy }) {
+export function Order() {
+  const dispatch = useDispatch();
+  const orderBy = useSelector((state) => state.sortOrder.orderBy);
+  const sortBy = useSelector((state) => state.sortOrder.sortBy);
+
   return (
     <SelectForm
       id="order"
       label="Dari :"
       selectBy={orderBy}
-      setSelectBy={setOrderBy}
+      setSelectBy={(event) =>
+        dispatch(sortOrderActions.setOrder(event.target.value))
+      }
     >
       <option value="lowest">
         {sortBy === "nama" ? "A ke Z" : "Terendah"}
