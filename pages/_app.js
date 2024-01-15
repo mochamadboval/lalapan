@@ -2,6 +2,9 @@ import Head from "next/head";
 import Link from "next/link";
 import { Plus_Jakarta_Sans } from "next/font/google";
 
+import { Provider } from "react-redux";
+import store from "@/store";
+
 import "@/styles/globals.css";
 
 const font = Plus_Jakarta_Sans({
@@ -21,7 +24,7 @@ function AsideSection({ children, title }) {
 
 export default function App({ Component, pageProps }) {
   return (
-    <>
+    <Provider store={store}>
       <Head>
         <meta
           name="description"
@@ -81,6 +84,6 @@ export default function App({ Component, pageProps }) {
           Gizi Lalapan &copy; 2024 - MIT License
         </small>
       </footer>
-    </>
+    </Provider>
   );
 }

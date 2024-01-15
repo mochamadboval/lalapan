@@ -1,6 +1,7 @@
 import Link from "next/link";
 
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { highlightActions } from "@/store";
 
 function Th({ children, style, unit }) {
   return (
@@ -25,13 +26,16 @@ function Td({ children, style }) {
 }
 
 export default function Table({ sortBy, sorted, table }) {
-  const [highlight, setHighlight] = useState([]);
+  const dispatch = useDispatch();
+  const highlight = useSelector((state) => state.highlight.highlight);
 
   const highlightRow = (id) => {
     if (highlight.includes(id)) {
-      setHighlight(highlight.filter((row) => row !== id));
+      dispatch(
+        highlightActions.setHighlight(highlight.filter((row) => row !== id)),
+      );
     } else {
-      setHighlight([...highlight, id]);
+      dispatch(highlightActions.setHighlight([...highlight, id]));
     }
   };
 
