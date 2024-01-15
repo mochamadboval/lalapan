@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { useState } from "react";
 
 function Th({ children, style, unit }) {
@@ -75,7 +77,16 @@ export default function Table({ sortBy, sorted, table }) {
                     text-left whitespace-nowrap
                   `}
                 >
-                  <h2>{info[1][1]}</h2>
+                  <h2>
+                    <Link
+                      href={`/${info[0][1]}`}
+                      prefetch={false}
+                      className="hover:underline"
+                      onClick={(event) => event.stopPropagation()}
+                    >
+                      {info[1][1]}
+                    </Link>
+                  </h2>
                 </Td>
                 <Td
                   style={`
