@@ -16,7 +16,7 @@ const font = Plus_Jakarta_Sans({
 function AsideSection({ children, title }) {
   return (
     <section className="sm:w-1/2">
-      <h3 className="text-3xl font-semibold leading-tight">{title}</h3>
+      <h3 className="text-2xl font-semibold leading-tight">{title}</h3>
       <p className="mt-2">{children}</p>
     </section>
   );
