@@ -30,6 +30,10 @@ export default function App({ Component, pageProps }) {
           name="description"
           content="Aplikasi web tentang komposisi gizi pada lalapan."
         />
+        <meta
+          name="google-site-verification"
+          content="DwowUTJ_m6mH___sjpij1P0lIK8DL_IA7qCc33jnkgo"
+        />
         <meta name="twitter:card" content="summary_large_image" />
         <meta property="og:type" content="website" />
         <meta
