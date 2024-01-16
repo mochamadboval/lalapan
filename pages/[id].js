@@ -11,6 +11,15 @@ export default function Detail({ lalapan }) {
           name="description"
           content={`Komposisi gizi pada lalapan ${lalapan.nama}.`}
         />
+        <meta
+          property="og:url"
+          content={`https://lalapan.vercel.app/${lalapan.id}`}
+        />
+        <meta property="og:title" content={`${lalapan.nama} - Gizi Lalapan`} />
+        <meta
+          property="og:description"
+          content={`Komposisi gizi pada lalapan ${lalapan.nama}.`}
+        />
         <title>{`${lalapan.nama} - Gizi Lalapan`}</title>
       </Head>
 

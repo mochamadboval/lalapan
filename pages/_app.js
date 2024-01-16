@@ -30,6 +30,18 @@ export default function App({ Component, pageProps }) {
           name="description"
           content="Aplikasi web tentang komposisi gizi pada lalapan."
         />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:image"
+          content="https://lalapan.vercel.app/lalapan-vercel-app.png"
+        />
+        <meta
+          property="og:image:alt"
+          content="Aplikasi web tentang komposisi gizi pada lalapan."
+        />
+        <meta property="og:site_name" content="Gizi Lalapan" />
+        <meta property="og:locale" content="id_ID" />
         <title>Gizi Lalapan</title>
         <link
           rel="icon"

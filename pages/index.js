@@ -1,6 +1,8 @@
 import { readFile } from "fs/promises";
 import { join } from "path";
 
+import Head from "next/head";
+
 import { useSelector } from "react-redux";
 
 import { Order, Sort } from "@/components/SortOrder";
@@ -59,13 +61,24 @@ export default function Home({ lalapan, tabel }) {
   ({ sorted, table } = moveColumn(sortBy, sorted, table));
 
   return (
-    <article>
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-center">
-        <Sort />
-        <Order />
-      </div>
-      <Table sorted={sorted} table={table} />
-    </article>
+    <>
+      <Head>
+        <meta property="og:url" content="https://lalapan.vercel.app/" />
+        <meta property="og:title" content="Gizi Lalapan" />
+        <meta
+          property="og:description"
+          content="Aplikasi web tentang komposisi gizi pada lalapan."
+        />
+      </Head>
+
+      <article>
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-center">
+          <Sort />
+          <Order />
+        </div>
+        <Table sorted={sorted} table={table} />
+      </article>
+    </>
   );
 }
 
